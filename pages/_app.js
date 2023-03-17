@@ -18,6 +18,8 @@ export default function App({ Component, pageProps }) {
 
   const lightsOnSum = lights.filter((light) => light.isOn === true).length;
 
+  const isDimmed = lights.every((light) => light.isOn === false);
+
   function handleToggle(id) {
     setLights(
       lights.map((light) => {
@@ -43,7 +45,7 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
-    <Layout>
+    <Layout isDimmed={isDimmed}>
       <GlobalStyle />
       <Component
         {...pageProps}
